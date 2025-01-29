@@ -1,11 +1,15 @@
-import { Button } from "@/components/ui/button";
-
+import ProductList from "@/components/shared/product/product-list";
+import { getAllProducts } from "@/lib/actions/product.actions";
 export const metadata = {
-  title: 'Homepage',
-}
-
-const Homepage = () => {
-  return (<Button>test</Button>);
-}
+  title: "Homepage",
+};
+const Homepage = async () => {
+  const latestProducts = await getAllProducts();
+  return (
+    <>
+      <ProductList data={latestProducts} title="Newest Arrivals" limit={4}/>
+    </>
+  );
+};  
 
 export default Homepage;
